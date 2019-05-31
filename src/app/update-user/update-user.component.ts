@@ -13,6 +13,7 @@ export class UpdateUserComponent implements OnInit {
   name: Object;
   email: any;
   type: any;
+  password: any;
 
   constructor(private RegisterService: RegisterService, private router: Router, private url: ActivatedRoute) { }
 
@@ -28,20 +29,20 @@ export class UpdateUserComponent implements OnInit {
         this.name = response['name']
         this.email = response['email']
         this.type = response['type']
-
+        this.password = response['password']
       }, err => {
         console.log(err)
       })
   }
 
   UpdateUser(form) {
-    console.log(form.value)
-    // this.RegisterService.updateClients(this.id, form.value).subscribe(
-    //   res => {
-    //     console.log(form)
-    //   },
-    //   error => {
-    //     console.log(error)
-    //   })
+   
+    this.RegisterService.updateClients(this.id, form.value).subscribe(
+      res => {
+        console.log(res)
+      },
+      error => {
+        console.log(error)
+      })
   }
 }
