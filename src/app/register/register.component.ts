@@ -11,12 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   id: number;
+  userList: any;
 
   constructor(private router: Router, private RegisterService: RegisterService, private url: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.id = + this.url.snapshot.paramMap.get('id');
+    this.Viewusers()
   }
 
   submit(form) {
@@ -34,6 +36,7 @@ export class RegisterComponent implements OnInit {
   Viewusers() {
     this.RegisterService.getClients().subscribe(
       res => {
+        this.userList =  res
         console.log(res)
       },
       error => {
@@ -41,19 +44,16 @@ export class RegisterComponent implements OnInit {
       })
   }
 
-  UpdateUser(id: number, form) {
-    this.RegisterService.updateClients(id, form.value).subscribe(
-      res => {
-        console.log(res)
-      },
-      error => {
-        console.log(error)
-      })
-  }
+updateUserNavigate(id: number){
 
-  DeleteUser(id: number) {
+  this.router.navigate(['/update',id]);
+}
+
+  DeleteUser(id: number,index: number) {
+  
     this.RegisterService.deleteClients(id).subscribe(
       res => {
+        this.userList.splice(index,1)
         console.log(res)
       }, error => {
         console.log(error)

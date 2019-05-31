@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  URL: 'http://laravel.technalatus.com/public/api/'
+  URL: "http://laravel.technalatus.com/public/api/"
 }

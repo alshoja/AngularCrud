@@ -85,12 +85,73 @@
                                   </div> -->
                               </div>
                           </div>
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Signup</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
               </div>
           </div>
+          <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Users</h4>
+                    <p class="card-category">List of  Users </p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>Actions</th>
+                               
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of userList; let i = index">
+                                    <td>
+                                        {{item.id}}
+                                    </td>
+                                    <td>
+                                        {{item.name}}
+                                    </td>
+                                    <td>
+                                        {{item.email}}
+                                    </td>
+                                   
+                                    <td class="text-primary">
+                                      {{item.type}}
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>Actions</mat-label>
+                                            <mat-select>
+                                              <mat-option (click)='updateUserNavigate(item.id)' >
+                                               Update
+                                              </mat-option>
+                                              <mat-option (click)='DeleteUser(item.id,i)' >
+                                                  Delete
+                                                 </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>  
+                                    </td>
+                                  </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
           <!-- <div class="col-md-4">
               <div class="card card-profile">
                   <div class="card-avatar">

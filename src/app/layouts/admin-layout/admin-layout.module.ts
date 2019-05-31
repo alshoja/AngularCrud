@@ -22,6 +22,7 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { RegisterComponent } from 'app/register/register.component';
+import { UpdateUserComponent } from 'app/update-user/update-user.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +44,8 @@ import { RegisterComponent } from 'app/register/register.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpdateUserComponent
   ]
 })
 
